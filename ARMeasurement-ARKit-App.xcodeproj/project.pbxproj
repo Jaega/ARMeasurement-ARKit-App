@@ -57,9 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				0DED6E5622F684D100AA88CC /* AppDelegate.swift */,
-				0DED6E5822F684D100AA88CC /* art.scnassets */,
 				0DED6E5A22F684D100AA88CC /* ViewController.swift */,
 				0DED6E5C22F684D100AA88CC /* Main.storyboard */,
+				0DED6E5822F684D100AA88CC /* art.scnassets */,
 				0DED6E5F22F684D300AA88CC /* Assets.xcassets */,
 				0DED6E6122F684D300AA88CC /* LaunchScreen.storyboard */,
 				0DED6E6422F684D300AA88CC /* Info.plist */,
@@ -289,6 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W377432P27;
 				INFOPLIST_FILE = "ARMeasurement-ARKit-App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W377432P27;
 				INFOPLIST_FILE = "ARMeasurement-ARKit-App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
