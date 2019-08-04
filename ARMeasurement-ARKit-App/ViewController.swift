@@ -13,6 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     var dotNodes = [SCNNode]()
+    var textNode = SCNNode()
     @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
@@ -44,12 +45,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - ARSCNViewDelegate
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if dotNodes.count >= 2 {
+            for dot in dotNodes {
+                dot.removeFromParentNode()
+            }
+            dotNodes.removeAll()
+            textNode.removeFromParentNode()
+        }
+        
         if let location = touches.first?.location(in: sceneView) {
             let hitTestResults = sceneView.hitTest(location, types: .featurePoint)
             
             if let hitResult = hitTestResults.first {
                 addDot(at: hitResult)
             }
+            
         }
         
     }
@@ -71,9 +81,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         dotNodes.append(node)
         
-        if dotNodes.count >= 2 {
+        if dotNodes.count == 2 {
             calculate()
         }
+        
     }
     
     private func calculate() {
@@ -95,11 +106,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func updateText(text: String, atPosition position: SCNVector3) {
+        
         let textGeometry = SCNText(string: text, extrusionDepth: 0.1)
         
         textGeometry.firstMaterial?.diffuse.contents = UIColor.yellow
         
-        let textNode = SCNNode(geometry: textGeometry)
+        textNode = SCNNode(geometry: textGeometry)
         textNode.position = SCNVector3(position.x, position.y + 0.01, position.z)
         textNode.scale = SCNVector3(0.003, 0.003, 0.003)
         
